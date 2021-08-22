@@ -26,6 +26,12 @@ Mesh.position.x = 2;
 // Add Mesh to the Scene using add() method
 Scene.add(Mesh);
 
+// Axes helper
+const AxesHelper = new THREE.AxesHelper();
+// Add AxesHelper to the Scene
+Scene.add(AxesHelper);
+
+
 // Camera (field of view z axis, the aspect ratio)
 const PerspectiveCamera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 // Position the Camera by changing value of z, y, x property
