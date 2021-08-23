@@ -12,24 +12,29 @@ let canvas = document.getElementById("webgl");
 // Scene
 const Scene = new THREE.Scene();
 
-// Geometry (1, 1, 1) units
-const Geometry = new THREE.BoxGeometry(1, 1, 1);
+// Group
+let Group = new THREE.Group();
 
-// Material color 0xff0000
-const Material = new THREE.MeshBasicMaterial({"color": 0xff0000});
+// Objects
+const CubeOne = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({"color": 0xff0000})
+);
 
-// Mesh
-const Mesh = new THREE.Mesh(Geometry, Material);
+CubeOne.position.x = 1;
 
-// Using Mesh inherited property of Object3D called position to move the object
-Mesh.position.x = 1;
+const CubeTwo = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshBasicMaterial({"color": 0xff0000})
+);
 
-// Using Mesh inherited property Euler called rotation to rotate the object around its axis
-Mesh.rotation.x = Math.PI;
-Mesh.rotation.y = Math.PI/4;
+CubeTwo.position.x = -1;
+
+Group.add(CubeOne);
+Group.add(CubeTwo);
 
 // Add Mesh to the Scene using add() method
-Scene.add(Mesh);
+Scene.add(Group);
 
 // Axes helper
 const AxesHelper = new THREE.AxesHelper();
@@ -42,8 +47,6 @@ const PerspectiveCamera = new THREE.PerspectiveCamera(75, sizes.width / sizes.he
 // Position the Camera by changing value of z, y, x property
 PerspectiveCamera.position.z = 3;
 
-// Make the camera look at the mesh object using the lookAt method of the Object3d
-PerspectiveCamera.lookAt(Mesh.position);
 
 // Add Camera to the Scene using add() method
 Scene.add(PerspectiveCamera);
