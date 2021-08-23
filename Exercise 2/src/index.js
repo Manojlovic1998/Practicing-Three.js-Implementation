@@ -22,7 +22,12 @@ const Material = new THREE.MeshBasicMaterial({"color": 0xff0000});
 const Mesh = new THREE.Mesh(Geometry, Material);
 
 // Using Mesh inherited property of Object3D called position to move the object
-Mesh.position.x = 2;
+Mesh.position.x = 1;
+
+// Using Mesh inherited property Euler called rotation to rotate the object around its axis
+Mesh.rotation.x = Math.PI;
+Mesh.rotation.y = Math.PI/4;
+
 // Add Mesh to the Scene using add() method
 Scene.add(Mesh);
 
