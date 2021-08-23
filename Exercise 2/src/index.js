@@ -42,6 +42,9 @@ const PerspectiveCamera = new THREE.PerspectiveCamera(75, sizes.width / sizes.he
 // Position the Camera by changing value of z, y, x property
 PerspectiveCamera.position.z = 3;
 
+// Make the camera look at the mesh object using the lookAt method of the Object3d
+PerspectiveCamera.lookAt(Mesh.position);
+
 // Add Camera to the Scene using add() method
 Scene.add(PerspectiveCamera);
 
