@@ -32,16 +32,19 @@ const Renderer = new THREE.WebGLRenderer({
 
 Renderer.setSize(sizes.width, sizes.height);
 
-
+let time = Date.now();
 // Animations
 /* This is a request animation frame function
 * What it does is that it generates scene for each frame
 * It is called once per frame */
 function animationFrame() {
+    let currentTime = Date.now();
+    let deltaTime = currentTime - time;
+    time = currentTime;
     // Update Object
-    Mesh.rotation.x += 0.01;
-    Mesh.rotation.y += 0.01;
-    Mesh.rotation.z += 0.01;
+    Mesh.rotation.x += 0.001 * deltaTime;
+    Mesh.rotation.y += 0.001 * deltaTime;
+    Mesh.rotation.z += 0.001 * deltaTime;
 
     // Render
     Renderer.render(Scene, PerspectiveCamera);
