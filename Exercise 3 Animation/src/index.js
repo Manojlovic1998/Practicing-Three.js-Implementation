@@ -20,7 +20,7 @@ const Mesh = new THREE.Mesh(Geometry, Material);
 Scene.add(Mesh);
 
 // Camera
-const PerspectiveCamera = new THREE.PerspectiveCamera(75, sizes.width/sizes.height);
+const PerspectiveCamera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 PerspectiveCamera.position.z = 3;
 
 Scene.add(PerspectiveCamera);
@@ -31,4 +31,21 @@ const Renderer = new THREE.WebGLRenderer({
 });
 
 Renderer.setSize(sizes.width, sizes.height);
-Renderer.render(Scene, PerspectiveCamera);
+
+
+// Animations
+/* This is a request animation frame function
+* What it does is that it generates scene for each frame
+* It is called once per frame */
+function animationFrame() {
+    // Update Object
+    Mesh.rotation.x += 0.01;
+    Mesh.rotation.y += 0.01;
+    Mesh.rotation.z += 0.01;
+
+    // Render
+    Renderer.render(Scene, PerspectiveCamera);
+    window.requestAnimationFrame(animationFrame);
+}
+
+animationFrame();
