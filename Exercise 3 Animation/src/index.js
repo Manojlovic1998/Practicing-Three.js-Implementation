@@ -1,5 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
+import gsap from 'gsap';
+
 
 // Sizes
 const sizes = {
@@ -32,22 +34,23 @@ const Renderer = new THREE.WebGLRenderer({
 
 Renderer.setSize(sizes.width, sizes.height);
 
-// Clock
-const Clock = new THREE.Clock();
+// // Clock
+// const Clock = new THREE.Clock();
 
+gsap.to(Mesh.position, {duration: 1, delay: 1, x: 2});
+gsap.to(Mesh.position, {duration: 1, delay: 2, x: 0});
 
 // Animations
 /* This is a request animation frame function
 * What it does is that it generates scene for each frame
 * It is called once per frame */
 function animationFrame() {
-    // Clock
-    let elapsedTime = Clock.getElapsedTime();
-    console.log(elapsedTime);
-    // Update Object
-    Mesh.rotation.y = elapsedTime;
-    Mesh.position.y = Math.sin(elapsedTime);
-    Mesh.position.x = Math.cos(elapsedTime);
+    // // Clock
+    // let elapsedTime = Clock.getElapsedTime();
+    // // Update Object
+    // Mesh.rotation.y = elapsedTime;
+    // Mesh.position.y = Math.sin(elapsedTime);
+    // Mesh.position.x = Math.cos(elapsedTime);
 
     // Render
     Renderer.render(Scene, PerspectiveCamera);
